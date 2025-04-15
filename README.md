@@ -1,48 +1,104 @@
-# Passo 1: Entrar no sistema da empresa - https://dlp.hashtagtreinamentos.com/python/intensivao/login
-
-# Passo 2: Fazer o login
-# Passo 3: Importar a base de dados
-# Passo 4: Cadastrar 1 Produto
-# Passo 5: Repetir para todos os produtos
-
-# Biblioteca: Instalar um pacote para fazer automações com python (pyautogui)
-# clicar no terminal  e digitar: pip install pyautogui e aguardar a instalação caso já não tenha instalado.
-
-# O import pyautogui serve para automatizar o controle do mouse e do teclado em Python, permitindo interações com a interface gráfica do usuário.
-
-# pyautogui.click -> clicar em algum lugar
-# pyautogui.press -> apertar 1 tecla
-# pyautogui.write -> escrever um texto
-# pyautogui.hotkey -> apertar uma combinação de teclas
-# pyautogui.pause -> serve para definir um tempo de espera 
-
-
-O `pyautogui.pause` serve para **definir um tempo de espera automático entre cada comando do PyAutoGUI**. Isso é útil para deixar a automação mais lenta e estável, evitando que os comandos sejam executados rápido demais.
-
-### Exemplo:
-```python
+# Importa a biblioteca pyautogui, usada para automação de mouse e teclado
 import pyautogui
+# Importa a biblioteca time, usada para adicionar pausas (delays) no código
+import time
+# Importa a biblioteca pandas, usada para manipulação de arquivos e dados (como o CSV)
+import pandas
 
-pyautogui.pause = 1  # Espera 1 segundo após cada comando
+# Define um tempo de pausa de 0.5 segundos entre cada comando do pyautogui
+pyautogui.PAUSE = 0.5
 
-pyautogui.moveTo(100, 100)
-pyautogui.click()
-```
+# Pressiona a tecla "Windows" para abrir o menu iniciar
+pyautogui.press("win")
+# Digita "chrome" para buscar o navegador
+pyautogui.write("chrome")
+# Pressiona Enter para abrir o navegador Google Chrome
+pyautogui.press("enter")
 
-Nesse exemplo, o PyAutoGUI vai esperar 1 segundo **depois de mover o mouse** e mais 1 segundo **depois de clicar**.
+# Digita o link do sistema da empresa
+pyautogui.write("https://dlp.hashtagtreinamentos.com/python/intensivao/login")
+# Pressiona Enter para acessar o site
+pyautogui.press("enter")
 
-👉 Útil para depuração ou para dar tempo ao sistema/processos entre ações.
+# Aguarda 3 segundos para garantir que o site carregue
+time.sleep(3)
 
-"""Para não precisar usar o O print(pyautogui.position(),
-vamos usar o tab, assim a após digitar o e-mailé só apertar o 
-tab automaticamente que irá para o próximo campo"""
+# Clica na posição do campo de e-mail (posição precisa ser coletada com pyautogui.position())
+pyautogui.click(x=465, y=725)
+# Digita o e-mail de login
+pyautogui.write("pythonimpressionador@gmail.com")
+# Pressiona TAB para ir para o campo da senha
+pyautogui.press("tab")
+# Digita a senha
+pyautogui.write("minhasenhasupersecreta")
+# Pressiona TAB para ir até o botão "Logar"
+pyautogui.press("tab")
+# Pressiona Enter para realizar o login
+pyautogui.press("enter")
 
-#Passo 3: Importar a base de Dados
-""" Para importar os dados, temos que ter o arquivo .csv e importar o Pandas. Abra o terminal e digite: pip install pandas """
+# Aguarda 3 segundos para o sistema carregar após o login
+time.sleep(3)
 
-"""Vamos aramazenar essa base de dados pandas.read_csv("produtos.csv") em uma "caixinha" que no caso aqui será o nome de Tabela"""
-
-
-# O print irá printar no terminal toda a tabela 
+# Lê o arquivo CSV chamado "produtos.csv" (a primeira leitura é opcional aqui)
+pandas.read_csv("produtos.csv")
+# Lê novamente e armazena a base de dados na variável "tabela"
+tabela = pandas.read_csv("produtos.csv")
+# Exibe a tabela no terminal para ver os dados importados
 print(tabela)
 
+# Clica na posição do botão de cadastro de produto (posição coletada previamente)
+pyautogui.click(x=884, y=515)
+
+# Define o código do produto
+codigo = "MOLO000251"
+# Digita o código
+pyautogui.write(codigo)
+# Passa para o próximo campo
+pyautogui.press("tab")
+
+# Define a marca
+marca = "Logitech"
+# Digita a marca
+pyautogui.write(marca)
+# Próximo campo
+pyautogui.press("tab")
+
+# Define o tipo do produto
+tipo = "mouse"
+# Digita o tipo
+pyautogui.write(tipo)
+# Próximo campo
+pyautogui.press("tab")
+
+# Define a categoria
+categoria = "1"
+# Digita a categoria
+pyautogui.write(categoria)
+# Próximo campo
+pyautogui.press("tab")
+
+# Define o preço unitário
+preco_unitario = "25.95"
+# Digita o preço unitário
+pyautogui.write(preco_unitario)
+# Próximo campo
+pyautogui.press("tab")
+
+# Define o custo do produto
+custo = "6.50"
+# Digita o custo
+pyautogui.write(custo)
+# Próximo campo
+pyautogui.press("tab")
+
+# Observações (nesse caso está vazio)
+obs = ""
+# Digita o campo de observações
+pyautogui.write(obs)
+
+# Pressiona tab para ir até o botão de "Cadastrar"
+pyautogui.press("tab")
+# Pressiona enter para finalizar o cadastro
+pyautogui.press("enter")
+
+Continua ...
