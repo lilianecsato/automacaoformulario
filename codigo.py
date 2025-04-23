@@ -6,7 +6,8 @@ import time
 pyautogui.PAUSE = 0.5
 
 # Passo 1: Entrar no sistema da empresa - https://dlp.hashtagtreinamentos.com/python/intensivao/login
-# Abrir o chrome (Os comandos abaixo 1° irá abrir a janela do Windows e depois o Chrome)
+# Abrir o chrome  
+# (Os comandos abaixo 1° irá abrir a janela do Windows e depois o Chrome)
 
 pyautogui.press("win")
 pyautogui.write("chrome")
@@ -52,38 +53,52 @@ tabela = pandas.read_csv("produtos.csv")
 # O print irá printar no terminal toda a tabela 
 print(tabela)
 
-# Cadastrar um produto
-pyautogui.click(x=884, y=515)
+# Passo 4 Cadastrar um produto
 
-codigo = "MOLO000251"
-pyautogui.write(codigo)
+for linha in tabela.index:#para cada linha da minha tabela
+    pyautogui.click(x=884, y=515)
 
-pyautogui.press("tab") #passar para o próximo campo
-marca = "Logitech"
-pyautogui.write(marca)
 
-pyautogui.press("tab") #passar para o próximo campo
-tipo = "mouse"
-pyautogui.write(tipo)
+    #codigo = "MOLO000251"
+    codigo = tabela.loc[linha, "codigo"]
+    pyautogui.write(codigo)
 
-pyautogui.press("tab") #passar para o próximo campo
-categoria = "1"
-pyautogui.write(categoria)
+    pyautogui.press("tab") #passar para o próximo campo
+    #marca = "Logitech"
+    marca = tabela.loc[linha, "marca"]
+    pyautogui.write(marca)      
+    
 
-pyautogui.press("tab") #passar para o próximo campo
-preco_unitario = "25.95"
-pyautogui.write(preco_unitario)
+    pyautogui.press("tab") #passar para o próximo campo
+    tipo = "mouse"
+    pyautogui.write(tipo)
 
-pyautogui.press("tab") #passar para o próximo campo
-custo = "6.50"
-pyautogui.write(custo)
+    pyautogui.press("tab") #passar para o próximo campo
+    categoria = "1"
+    pyautogui.write(categoria)
 
-pyautogui.press("tab") #passar para o próximo campo
-obs = ""
-pyautogui.write(obs)
+    pyautogui.press("tab") #passar para o próximo campo
+    preco_unitario = "25.95"
+    pyautogui.write(preco_unitario)
 
-pyautogui.press("tag")
-pyautogui.press("enter")
+    pyautogui.press("tab") #passar para o próximo campo
+    custo = "6.50"
+    pyautogui.write(custo)
+
+    pyautogui.press("tab") #passar para o próximo campo
+    obs = ""
+    pyautogui.write(obs)
+
+    pyautogui.press("tab")
+    pyautogui.press("enter")
+
+    pyautogui.scroll(100000)
+
+
+#Passo 5, repetir para todos os produtos colocando um for no passo 4
+
+
+
 
 
 

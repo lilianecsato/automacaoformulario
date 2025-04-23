@@ -102,3 +102,7 @@ pyautogui.press("tab")
 pyautogui.press("enter")
 
 Continua ...
+
+
+#Passo 5, repetir para todos os produtos colocando um for no passo 4
+Para o For reconhecer, selecionar todo o passo 4 e apertar o Tab, para acontecer a "identação"
